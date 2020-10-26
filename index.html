@@ -11,7 +11,7 @@
       THREEx.ArToolkitContext.baseURL =
         "https://raw.githack.com/jeromeetienne/ar.js/master/three.js/";
     </script>
-    <script src="./script.js"></script>
+    <!-- <script src="./script.js"></script> -->
     <link rel="stylesheet" type="text/css" href="./style.css" />
   </head>
 
@@ -22,6 +22,7 @@
       embedded
       arjs="sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: true;"
     >
+      <a-image src="./assets/image.jpg" width="3" height="1.5"></a-image>
       <a-camera gps-camera rotation-reader look-controls></a-camera>
     </a-scene>
     <div class="centered">
