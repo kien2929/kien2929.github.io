@@ -16,11 +16,12 @@
     <a-scene
       vr-mode-ui="enabled: false"
       embedded
-      arjs="sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: true;"
+      arjs="sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;"
     >
-    
-      <a-image gps-projected-entity-place = "latitude: 21.008077; longitude: 105.849761"src="./assets/image.jpg" width="1.5" height="1.5"></a-image>
-      <a-camera gps-projected-camera rotation-reader look-controls simulateLatitude='21.008077' simulateLongitude='105.849760'></a-camera>
+      <a-image gps-entity-place = "latitude: 21.0078808; longitude: 105.8495172"src="./assets/1.jpg" scale="1 1 1"></a-text></a-image>
+      <a-image gps-entity-place = "latitude: 21.0078808; longitude: 105.8495409"src="./assets/2.jpg" scale="1 1 1" ></a-image>
+      <a-image gps-entity-place = "latitude: 21.0077223; longitude: 105.8495172"src="./assets/image.jpg" scale="1 1 1"></a-image>
+      <a-camera gps-camera rotation-reader maxDistance=5 ></a-camera>
     </a-scene>
     <!-- <div class="centered">
       <button data-action="change"></button>
