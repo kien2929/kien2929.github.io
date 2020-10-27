@@ -48,11 +48,11 @@ function renderPlaces(places) {
       `latitude: ${latitude}; longitude: ${longitude};`
     );
     // img.setAttribute("src", `${src}`);
-    // img.setAttribute("look-at", "[gps-camera]");
-    img.setAttribute("scale", place.scale);
-    img.setAttribute("rotation", "0 0 0");
-    img.setAttribute("gltf-model", place.src);
-    img.setAttribute("animation-mixer", "");
+    img.setAttribute("look-at", "[gps-camera]")
+    img.setAttribute("gltf-model", place.src)
+    img.setAttribute("rotation", "0 0 0")
+    img.setAttribute('animation-mixer','')
+    img.setAttribute("scale", place.scale)
     img.addEventListener("loaded", () => {
       window.dispatchEvent(new CustomEvent("gps-entity-place-loaded"));
     });
