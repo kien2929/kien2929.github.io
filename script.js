@@ -1,7 +1,4 @@
 window.onload = () => {
-  const button = document.querySelector('button[data-action="change"]');
-  button.innerText = "﹖";
-
   let places = staticLoadPlaces();
   renderPlaces(places);
 };
@@ -9,56 +6,34 @@ window.onload = () => {
 function staticLoadPlaces() {
   return [
     {
-      name: "Pokèmon",
+      name: "cesiumman",
+      src: "assets/CesiumMan/glTF-Embedded/CesiumMan.gltf",
+      scale: "20 20 20",
       location: {
-        // decomment the following and add coordinates:
-        lat: 21.008077,
-        lng: 105.849761,
+        lat: 21.008769,
+        lng: 105.851390,
       },
     },
-  ];
+    {
+      name: "boom",
+      src: "assets/BoomBoxWithAxes/glTF/BoomBoxWithAxes.gltf",
+      scale: "250 250 250",
+      location: {
+        lat: 21.008512,
+        lng: 105.848589,
+      },
+    },
+    {
+      name: "magnemite",
+      src: "assets/magnemite/scene.gltf",
+      scale: "1 1 1",
+      location: {
+        lat: 21.006929,
+        lng: 105.848670,
+      },
+    },
+  ]
 }
-
-var models = [
-  {
-    url: "./assets/magnemite/scene.gltf",
-    scale: "0.5 0.5 0.5",
-    info: "Magnemite, Lv. 5, HP 10/10",
-    rotation: "0 0 0",
-  },
-  {
-    url: "./assets/articuno/scene.gltf",
-    scale: "0.2 0.2 0.2",
-    rotation: "0 0 0",
-    info: "Articuno, Lv. 80, HP 100/100",
-  },
-  {
-    url: "./assets/dragonite/scene.gltf",
-    scale: "0.08 0.08 0.08",
-    rotation: "0 0 0",
-    info: "Dragonite, Lv. 99, HP 150/150",
-  },
-];
-
-var modelIndex = 0;
-var setModel = function (model, entity) {
-  if (model.scale) {
-    entity.setAttribute("scale", model.scale);
-  }
-
-  if (model.rotation) {
-    entity.setAttribute("rotation", model.rotation);
-  }
-
-  if (model.position) {
-    entity.setAttribute("position", model.position);
-  }
-
-  entity.setAttribute("gltf-model", model.url);
-
-  const div = document.querySelector(".instructions");
-  div.innerText = model.info;
-};
 
 function renderPlaces(places) {
   let scene = document.querySelector("a-scene");
@@ -67,25 +42,20 @@ function renderPlaces(places) {
     let latitude = place.location.lat;
     let longitude = place.location.lng;
 
-    let model = document.createElement("a-entity");
-    model.setAttribute(
+    let img = document.createElement("a-entity");
+    img.setAttribute(
       "gps-entity-place",
       `latitude: ${latitude}; longitude: ${longitude};`
     );
-
-    setModel(models[modelIndex], model);
-
-    // model.setAttribute("animation-mixer", "");
-
-    document
-      .querySelector('button[data-action="change"]')
-      .addEventListener("click", function () {
-        var entity = document.querySelector("[gps-entity-place]");
-        modelIndex++;
-        var newIndex = modelIndex % models.length;
-        setModel(models[newIndex], entity);
-      });
-
-    scene.appendChild(model);
+    // img.setAttribute("src", `${src}`);
+    // img.setAttribute("look-at", "[gps-camera]");
+    img.setAttribute("scale", place.scale);
+    img.setAttribute("rotation", "0 0 0");
+    img.setAttribute("gltf-model", place.src);
+    img.setAttribute("animation-mixer", "");
+    img.addEventListener("loaded", () => {
+      window.dispatchEvent(new CustomEvent("gps-entity-place-loaded"));
+    });
+    scene.appendChild(img);
   });
 }

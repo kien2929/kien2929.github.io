@@ -7,8 +7,7 @@
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
-    <!-- <script src="./script.js"></script> -->
-    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <script src="./script.js"></script>
   </head>
 
   <body style="margin: 0; overflow: hidden">
@@ -16,15 +15,9 @@
     <a-scene
       vr-mode-ui="enabled: false"
       embedded
-      arjs="sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;"
+      arjs="sourceType: webcam; debugUIEnabled: false;"
     >
-      <a-image gps-entity-place = "latitude: 21.0078808; longitude: 105.8495172"src="./assets/1.jpg" scale="1 1 1"></a-text></a-image>
-      <a-image gps-entity-place = "latitude: 21.0078808; longitude: 105.8495409"src="./assets/2.jpg" scale="1 1 1" ></a-image>
-      <a-image gps-entity-place = "latitude: 21.0077223; longitude: 105.8495172"src="./assets/image.jpg" scale="1 1 1"></a-image>
-      <a-camera gps-camera rotation-reader maxDistance=5 ></a-camera>
+      <a-camera gps-camera rotation-reader></a-camera>
     </a-scene>
-    <!-- <div class="centered">
-      <button data-action="change"></button>
-    </div> -->
   </body>
 </html>
