@@ -8,16 +8,16 @@ function staticLoadPlaces() {
     {
       name: "cesiumman",
       src: "assets/CesiumMan/glTF-Embedded/CesiumMan.gltf",
-      scale: "20 20 20",
+      scale: "30 30 30",
       location: {
         lat: 21.008769,
         lng: 105.851390,
       },
     },
     {
-      name: "boom",
-      src: "assets/BoomBoxWithAxes/glTF/BoomBoxWithAxes.gltf",
-      scale: "250 250 250",
+      name: "robo",
+      src: "assets/robo/BrainStem.gltf",
+      scale: "20 20 20",
       location: {
         lat: 21.008512,
         lng: 105.848589,
@@ -26,7 +26,7 @@ function staticLoadPlaces() {
     {
       name: "magnemite",
       src: "assets/magnemite/scene.gltf",
-      scale: "1 1 1",
+      scale: "2 2 2",
       location: {
         lat: 21.006929,
         lng: 105.848670,
@@ -42,20 +42,20 @@ function renderPlaces(places) {
     let latitude = place.location.lat;
     let longitude = place.location.lng;
 
-    let img = document.createElement("a-entity");
-    img.setAttribute(
+    let model = document.createElement("a-entity");
+    model.setAttribute(
       "gps-entity-place",
       `latitude: ${latitude}; longitude: ${longitude};`
     );
-    // img.setAttribute("src", `${src}`);
-    img.setAttribute("look-at", "[gps-camera]")
-    img.setAttribute("gltf-model", place.src)
-    img.setAttribute("rotation", "0 0 0")
-    img.setAttribute('animation-mixer','')
-    img.setAttribute("scale", place.scale)
-    img.addEventListener("loaded", () => {
+    // model.setAttribute("src", `${src}`);
+    model.setAttribute("look-at", "[gps-camera]")
+    model.setAttribute("gltf-model", place.src)
+    model.setAttribute("rotation", "0 0 0")
+    model.setAttribute('animation-mixer','')
+    model.setAttribute("scale", place.scale)
+    model.addEventListener("loaded", () => {
       window.dispatchEvent(new CustomEvent("gps-entity-place-loaded"));
     });
-    scene.appendChild(img);
+    scene.appendChild(model);
   });
 }
